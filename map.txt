@@ -1,2 +1,12 @@
 Folder Structure (check)
 User Authentication Containing (auth, login, signup, forget-password, otp (one-time-password), getting all users for admin, user three types admin, customer and vendor)
+
+Multi vendor
+
+1. multi-vendor marketplace is an online store where multiple vendors or sellers can list and sell their products and services in one single location. The owner of the multi-vendor platform then takes a cut of the transaction (commission).
+
+2. Setting up a multi-vendor marketplace platform takes away much of the traditional burden associated with creating an online store since you don’t have to deal with inventory management or find suppliers; just recruit quality vendors and make sure they adhere to your rules and regulations.
+
+3. Challenges of running a multi-vendor website include start-up costs, finding quality sellers, and marketing the site to bring customers in.
+
+4. Multi-vendor marketplace platforms are typically separated into two distinct versions. One is a product marketplace, where vendors sell physical products and ship them to customers (eBay, Etsy, Amazon Marketplace). The other is a services marketplace, where the platform vendors are selling a service or rental (Uber, Airbnb, Angi).
