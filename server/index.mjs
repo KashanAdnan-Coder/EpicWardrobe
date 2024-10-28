@@ -9,5 +9,4 @@ connectDatabase(process.env.MONGODB_URI)
 
 app.listen(PORT, () => {
     console.log(`Server is listening ${PORT}`);
-
 })

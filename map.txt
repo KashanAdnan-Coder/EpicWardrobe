@@ -1,0 +1,2 @@
+Folder Structure (check)
+User Authentication Containing (auth, login, signup, forget-password, otp (one-time-password), getting all users for admin, user three types admin, customer and vendor)
