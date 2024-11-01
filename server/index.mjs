@@ -10,10 +10,10 @@ import productRoute from "./routes/product.routes.mjs"
 const app = express()
 app.use(express.json())
 app.use(cookieParser())
-app.use("/users", userRoute)
+app.use("/api/v1/users", userRoute)
 app.use("/products", productRoute)
 cloudinary.config({
-    cloud_name: 'da3kbt3yk',
+    cloud_name: process.env.CLOUD_NAME,
     api_key: process.env.api_key,
     api_secret: process.env.api_secret
 });

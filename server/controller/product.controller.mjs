@@ -1,10 +1,9 @@
 import Product from "../models/product.model.mjs";
 import { v2 as cloudinary } from 'cloudinary';
 
-// Create a new product
 const createProduct = async (req, res) => {
     try {
-        const { name, description, price, stock, category } = req.body;
+        const body = req.body;
 
         if (!req.file) {
             return res.status(400).json({
@@ -12,16 +11,10 @@ const createProduct = async (req, res) => {
                 message: "Please upload a product image"
             });
         }
-
-        // Upload image to cloudinary
         const result = await cloudinary.uploader.upload(req.file.path);
 
         const product = await Product.create({
-            name,
-            description,
-            price,
-            stock,
-            category,
+            ...body,
             imageUrl: result.secure_url
         });
 
@@ -38,11 +31,10 @@ const createProduct = async (req, res) => {
     }
 };
 
-// Get all products
 const getAllProducts = async (req, res) => {
     try {
         const products = await Product.find();
-        
+
         res.status(200).json({
             success: true,
             count: products.length,
@@ -61,7 +53,7 @@ const getAllProducts = async (req, res) => {
 const getProductById = async (req, res) => {
     try {
         const product = await Product.findById(req.params.id);
-        
+
         if (!product) {
             return res.status(404).json({
                 success: false,
@@ -86,7 +78,7 @@ const getProductById = async (req, res) => {
 const updateProduct = async (req, res) => {
     try {
         let product = await Product.findById(req.params.id);
-        
+
         if (!product) {
             return res.status(404).json({
                 success: false,
@@ -128,7 +120,7 @@ const updateProduct = async (req, res) => {
 const deleteProduct = async (req, res) => {
     try {
         const product = await Product.findById(req.params.id);
-        
+
         if (!product) {
             return res.status(404).json({
                 success: false,
