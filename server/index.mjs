@@ -1,17 +1,21 @@
 import express from "express"
 import dotenv from "dotenv"
+import cookieParser from "cookie-parser"
 dotenv.config()
 import { v2 as cloudinary } from 'cloudinary';
 import connectDatabase from "./database/index.mjs"
 import userRoute from "./routes/user.routes.mjs"
+import productRoute from "./routes/product.routes.mjs"
 
 const app = express()
 app.use(express.json())
+app.use(cookieParser())
 app.use("/users", userRoute)
+app.use("/products", productRoute)
 cloudinary.config({
     cloud_name: 'da3kbt3yk',
     api_key: process.env.api_key,
-    api_secret: process.env.api_secret // Click 'View API Keys' above to copy your API secret
+    api_secret: process.env.api_secret
 });
 const PORT = process.env.PORT || 3000
 connectDatabase(process.env.MONGODB_URI)
