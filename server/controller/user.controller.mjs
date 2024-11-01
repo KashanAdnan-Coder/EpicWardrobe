@@ -2,7 +2,6 @@ import userModel from "../models/user.model.mjs"
 import { v2 as cloudinary } from 'cloudinary';
 import bcryptjs from "bcryptjs"
 import jwt from "jsonwebtoken"
-
 import nodemailer from "nodemailer"
 
 const registerAccount = async (req, res) => {
@@ -238,6 +237,11 @@ const updateUser = async (req, res) => {
     try {
         const { id } = req.params
         const updates = req.body
+        // Handle image update if provided
+        if (req.file) {
+            const result = await cloudinary.uploader.upload(req.file.path);
+            updates.profileImage = result.secure_url;
+        }
 
         // Prevent password update through this route
         delete updates.password
